@@ -1,0 +1,2132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Hobby - Bahasa Inggris Kelas 3 SD (Chapter 5 Pertemuan 2)</title>
+  <style>
+    /* ==========================================================================
+       DESIGN TOKENS & OFFLINE-FIRST ELEMENTARY SCHOOL THEME
+       Zero external dependencies: uses system rounded/kid-friendly fonts,
+       inline SVGs, Web Speech API (TTS), and Web Audio API (chimes & melody).
+       ========================================================================== */
+    :root {
+      --bg-sky: #e0f2fe;
+      --bg-cream: #fefce8;
+      --card-bg: #ffffff;
+      --primary-blue: #0284c7;
+      --primary-blue-dark: #0369a1;
+      --accent-yellow: #facc15;
+      --accent-yellow-dark: #eab308;
+      --accent-green: #10b981;
+      --accent-green-dark: #059669;
+      --accent-coral: #f43f5e;
+      --accent-coral-dark: #e11d48;
+      --accent-purple: #8b5cf6;
+      --text-main: #1e293b;
+      --text-muted: #475569;
+      --border-soft: #cbd5e1;
+      --shadow-card: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+      --shadow-btn: 0 5px 0 rgba(0, 0, 0, 0.16);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: "Comic Sans MS", "Chalkboard SE", "Trebuchet MS", "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #e0f2fe 0%, #fef9c3 50%, #dcfce7 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* ==========================================================================
+       HEADER & GLOBAL AUDIO CONTROLS
+       ========================================================================== */
+    .app-header {
+      background: linear-gradient(90deg, #0284c7 0%, #0ea5e9 55%, #10b981 100%);
+      color: #ffffff;
+      padding: 16px 20px;
+      box-shadow: 0 4px 16px rgba(2, 132, 199, 0.25);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-badge {
+      background: var(--accent-yellow);
+      color: #713f12;
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 6px 12px;
+      border-radius: 999px;
+      box-shadow: 0 3px 0 rgba(113, 63, 18, 0.25);
+      white-space: nowrap;
+    }
+
+    .brand-title h1 {
+      font-size: clamp(1.15rem, 2.5vw, 1.65rem);
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    }
+
+    .brand-title p {
+      font-size: 0.85rem;
+      opacity: 0.95;
+    }
+
+    .audio-controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pill-toggle {
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.65);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.15s ease, background 0.2s ease;
+    }
+
+    .pill-toggle:hover {
+      background: rgba(255, 255, 255, 0.32);
+    }
+
+    .pill-toggle:active {
+      transform: scale(0.96);
+    }
+
+    .pill-toggle.active-speed {
+      background: var(--accent-yellow);
+      color: #713f12;
+      border-color: #fff;
+    }
+
+    /* ==========================================================================
+       NAVIGATION TABS (5 RPP STAGES)
+       ========================================================================== */
+    .nav-wrapper {
+      max-width: 1200px;
+      margin: 18px auto 0;
+      padding: 0 16px;
+    }
+
+    .nav-tabs {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    @media (max-width: 960px) {
+      .nav-tabs {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 580px) {
+      .nav-tabs {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .tab-btn {
+      background: #ffffff;
+      border: 3px solid #bae6fd;
+      border-radius: var(--radius-lg);
+      padding: 12px 10px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 #bae6fd;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .tab-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary-blue);
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(180deg, #fef08a 0%, #facc15 100%);
+      border-color: #ca8a04;
+      box-shadow: 0 5px 0 #ca8a04;
+      transform: translateY(-2px);
+    }
+
+    .tab-step {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--primary-blue-dark);
+      background: #e0f2fe;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
+    .tab-btn.active .tab-step {
+      background: #713f12;
+      color: #fef08a;
+    }
+
+    .tab-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    /* ==========================================================================
+       MAIN CONTAINER & SHARED UI COMPONENTS
+       ========================================================================== */
+    .main-container {
+      max-width: 1200px;
+      margin: 20px auto 48px;
+      padding: 0 16px;
+    }
+
+    .module-section {
+      display: none;
+      animation: fadeSlideIn 0.3s ease;
+    }
+
+    .module-section.active {
+      display: block;
+    }
+
+    @keyframes fadeSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stage-banner {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-card);
+      border-left: 8px solid var(--primary-blue);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .stage-banner h2 {
+      font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+      color: var(--primary-blue-dark);
+      margin-bottom: 4px;
+    }
+
+    .stage-banner p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+
+    .pattern-chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pattern-chip {
+      background: #f0f9ff;
+      border: 2px dashed #38bdf8;
+      color: #0369a1;
+      padding: 8px 14px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .pattern-chip:hover {
+      background: #e0f2fe;
+      transform: scale(1.02);
+    }
+
+    /* Reusable Kid-Friendly Buttons */
+    .btn-kid {
+      border: none;
+      border-radius: var(--radius-md);
+      padding: 12px 18px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform 0.12s ease, filter 0.15s ease;
+      box-shadow: var(--shadow-btn);
+      user-select: none;
+    }
+
+    .btn-kid:hover {
+      filter: brightness(1.05);
+    }
+
+    .btn-kid:active {
+      transform: translateY(3px);
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.16);
+    }
+
+    .btn-blue {
+      background: var(--primary-blue);
+      color: #ffffff;
+    }
+
+    .btn-green {
+      background: var(--accent-green);
+      color: #ffffff;
+    }
+
+    .btn-coral {
+      background: var(--accent-coral);
+      color: #ffffff;
+    }
+
+    .btn-yellow {
+      background: var(--accent-yellow);
+      color: #713f12;
+    }
+
+    .btn-purple {
+      background: var(--accent-purple);
+      color: #ffffff;
+    }
+
+    /* ==========================================================================
+       MODULE 1: FLASHCARDS & KOSAKATA (ACTIVITY 1: LET'S GET READY)
+       ========================================================================== */
+    .flashcards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 20px;
+    }
+
+    .hobby-card {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 20px;
+      box-shadow: var(--shadow-card);
+      border: 4px solid #e2e8f0;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hobby-card.mode-like {
+      border-color: #34d399;
+      background: linear-gradient(180deg, #ffffff 65%, #ecfdf5 100%);
+    }
+
+    .hobby-card.mode-dislike {
+      border-color: #fb7185;
+      background: linear-gradient(180deg, #ffffff 65%, #fff1f2 100%);
+    }
+
+    .hobby-illustration {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      border: 3px solid #e2e8f0;
+      box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    .hobby-en-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--text-main);
+      text-transform: lowercase;
+    }
+
+    .hobby-id-sub {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .emotion-toggle-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      width: 100%;
+      margin-bottom: 14px;
+    }
+
+    .emo-btn {
+      padding: 10px 8px;
+      border-radius: var(--radius-md);
+      border: 3px solid #cbd5e1;
+      background: #f8fafc;
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .emo-btn.like-btn.selected {
+      background: #d1fae5;
+      border-color: #10b981;
+      color: #065f46;
+      transform: scale(1.03);
+    }
+
+    .emo-btn.dislike-btn.selected {
+      background: #ffe4e6;
+      border-color: #f43f5e;
+      color: #9f1239;
+      transform: scale(1.03);
+    }
+
+    .sentence-preview-box {
+      width: 100%;
+      background: #ffffff;
+      border: 2px dashed #94a3b8;
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      margin-bottom: 14px;
+    }
+
+    .sentence-q {
+      font-size: 0.85rem;
+      color: var(--primary-blue-dark);
+      font-weight: 700;
+    }
+
+    .sentence-a {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-top: 2px;
+    }
+
+    .sentence-a.text-like {
+      color: #059669;
+    }
+
+    .sentence-a.text-dislike {
+      color: #e11d48;
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      width: 100%;
+      margin-top: auto;
+    }
+
+    /* ==========================================================================
+       MODULE 2: LISTEN & CHECK GAME (ACTIVITY 2: LET'S START LEARNING)
+       ========================================================================== */
+    .game-arena {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .game-hud {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: #f0f9ff;
+      padding: 14px 20px;
+      border-radius: var(--radius-lg);
+      border: 2px solid #bae6fd;
+      margin-bottom: 20px;
+    }
+
+    .score-pill {
+      background: var(--accent-yellow);
+      color: #713f12;
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding: 8px 16px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .game-step-box {
+      margin-bottom: 22px;
+    }
+
+    .game-step-label {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--primary-blue-dark);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .game-hobby-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+    }
+
+    .game-option-card {
+      background: #f8fafc;
+      border: 3px solid #cbd5e1;
+      border-radius: var(--radius-lg);
+      padding: 12px 8px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s ease;
+    }
+
+    .game-option-card:hover {
+      border-color: var(--primary-blue);
+      transform: translateY(-2px);
+    }
+
+    .game-option-card.picked {
+      background: #e0f2fe;
+      border-color: #0284c7;
+      box-shadow: 0 4px 0 #0284c7;
+    }
+
+    .game-emotion-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 560px;
+    }
+
+    .game-emo-card {
+      padding: 16px;
+      border-radius: var(--radius-lg);
+      border: 3px solid #cbd5e1;
+      background: #f8fafc;
+      font-family: inherit;
+      font-size: 1.15rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.15s ease;
+    }
+
+    .game-emo-card.picked-like {
+      background: #d1fae5;
+      border-color: #10b981;
+      color: #065f46;
+      box-shadow: 0 4px 0 #10b981;
+    }
+
+    .game-emo-card.picked-dislike {
+      background: #ffe4e6;
+      border-color: #f43f5e;
+      color: #9f1239;
+      box-shadow: 0 4px 0 #f43f5e;
+    }
+
+    .feedback-banner {
+      margin-top: 18px;
+      padding: 16px 20px;
+      border-radius: var(--radius-lg);
+      font-weight: 800;
+      font-size: 1.1rem;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .feedback-banner.show-success {
+      display: flex;
+      background: #d1fae5;
+      border: 3px solid #10b981;
+      color: #065f46;
+    }
+
+    .feedback-banner.show-error {
+      display: flex;
+      background: #ffe4e6;
+      border: 3px solid #f43f5e;
+      color: #9f1239;
+    }
+
+    /* ==========================================================================
+       MODULE 3: SONG TIME & TPR (ACTIVITY 3: MY HOBBY SONG)
+       ========================================================================== */
+    .song-layout {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 860px) {
+      .song-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .karaoke-card, .tpr-card {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .song-selector-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .song-ver-btn {
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+      border: 3px solid #cbd5e1;
+      background: #f8fafc;
+      font-family: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .song-ver-btn.active {
+      background: #e0f2fe;
+      border-color: var(--primary-blue);
+      color: var(--primary-blue-dark);
+    }
+
+    .verse-builder {
+      background: #fefce8;
+      border: 2px solid #fde047;
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      margin-bottom: 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 520px) {
+      .verse-builder {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .builder-field label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+      color: #713f12;
+    }
+
+    .builder-field select {
+      width: 100%;
+      padding: 10px;
+      border-radius: var(--radius-md);
+      border: 2px solid #eab308;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.95rem;
+      background: #ffffff;
+    }
+
+    .lyrics-stage {
+      background: linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 100%);
+      border: 3px solid #7dd3fc;
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+
+    .lyric-line {
+      padding: 12px 14px;
+      margin-bottom: 8px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.75);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-main);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .lyric-line:last-child {
+      margin-bottom: 0;
+    }
+
+    .lyric-line.singing-now {
+      background: #facc15;
+      color: #713f12;
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(234, 179, 8, 0.35);
+    }
+
+    .tpr-guide-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .tpr-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+    }
+
+    .tpr-emoji {
+      font-size: 1.8rem;
+      width: 44px;
+      height: 44px;
+      background: #fef9c3;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       MODULE 4: PAIR WORK SPINNER & LKPD DIGITAL (ACTIVITY 3)
+       ========================================================================== */
+    .pair-lkpd-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 920px) {
+      .pair-lkpd-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .spinner-card, .lkpd-card {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .spinner-stage {
+      background: linear-gradient(135deg, #fefce8 0%, #e0f2fe 100%);
+      border: 4px solid #38bdf8;
+      border-radius: var(--radius-xl);
+      padding: 22px 16px;
+      text-align: center;
+      margin: 16px 0;
+      position: relative;
+    }
+
+    .spinner-stage.spinning {
+      animation: pulseSpin 0.18s infinite alternate;
+    }
+
+    @keyframes pulseSpin {
+      from { transform: scale(0.98); }
+      to { transform: scale(1.02); }
+    }
+
+    .role-bubble {
+      background: #f1f5f9;
+      border-radius: var(--radius-md);
+      padding: 12px;
+      margin-bottom: 10px;
+      text-align: left;
+      border-left: 5px solid var(--primary-blue);
+    }
+
+    .role-bubble.student-b {
+      border-left-color: var(--accent-green);
+    }
+
+    .lkpd-items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .lkpd-item {
+      border: 3px solid #e2e8f0;
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      background: #f8fafc;
+      transition: all 0.2s ease;
+    }
+
+    .lkpd-item.correct-item {
+      border-color: #10b981;
+      background: #ecfdf5;
+    }
+
+    .lkpd-item.wrong-item {
+      border-color: #f43f5e;
+      background: #fff1f2;
+    }
+
+    .lkpd-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .lkpd-num-badge {
+      background: var(--primary-blue);
+      color: #fff;
+      font-weight: 800;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+    }
+
+    .lkpd-face-clue {
+      font-size: 1.85rem;
+      background: #ffffff;
+      padding: 2px 10px;
+      border-radius: 12px;
+      border: 2px solid #cbd5e1;
+    }
+
+    .lkpd-choice-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .lkpd-opt-btn {
+      padding: 8px;
+      border-radius: 10px;
+      border: 2px solid #94a3b8;
+      background: #ffffff;
+      font-family: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .lkpd-opt-btn.active-choice {
+      background: var(--accent-yellow);
+      border-color: #ca8a04;
+      color: #713f12;
+    }
+
+    /* ==========================================================================
+       MODULE 5: REFLEKSI DIRI & STAR STICKER CERTIFICATE
+       ========================================================================== */
+    .reflection-card {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 26px;
+      box-shadow: var(--shadow-card);
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .student-name-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 20px;
+      background: #f0f9ff;
+      padding: 14px 18px;
+      border-radius: var(--radius-lg);
+    }
+
+    .student-name-bar input {
+      flex: 1;
+      min-width: 200px;
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      border: 2px solid #38bdf8;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .refl-row {
+      border: 3px solid #e2e8f0;
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      margin-bottom: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: #f8fafc;
+    }
+
+    .refl-text h4 {
+      font-size: 1.05rem;
+      color: var(--text-main);
+    }
+
+    .refl-text p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .refl-options {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .refl-pick-btn {
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      border: 2px solid #cbd5e1;
+      background: #ffffff;
+      font-family: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 0.92rem;
+    }
+
+    .refl-pick-btn.selected-yes {
+      background: #d1fae5;
+      border-color: #10b981;
+      color: #065f46;
+    }
+
+    .refl-pick-btn.selected-practice {
+      background: #fef08a;
+      border-color: #eab308;
+      color: #713f12;
+    }
+
+    .certificate-box {
+      display: none;
+      margin-top: 24px;
+      background: linear-gradient(135deg, #fefce8 0%, #fef08a 50%, #fde047 100%);
+      border: 6px double #ca8a04;
+      border-radius: var(--radius-xl);
+      padding: 28px 20px;
+      text-align: center;
+      color: #713f12;
+      box-shadow: 0 12px 30px rgba(202, 138, 4, 0.25);
+    }
+
+    .certificate-box.visible {
+      display: block;
+      animation: fadeSlideIn 0.4s ease;
+    }
+
+    .cert-stars {
+      font-size: 2.5rem;
+      letter-spacing: 6px;
+      margin: 8px 0;
+    }
+
+    /* ==========================================================================
+       PRINT STYLES FOR CERTIFICATE
+       ========================================================================== */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #certificateBox, #certificateBox * {
+        visibility: visible;
+      }
+      #certificateBox {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        box-shadow: none;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ========================================================================
+       HEADER & GLOBAL AUDIO CONTROLS
+       ======================================================================== -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand-box">
+        <span class="brand-badge">Kelas III SD • Ch. 5 Pertemuan 2</span>
+        <div class="brand-title">
+          <h1>🎨 My Hobby: Like &amp; Don't Like</h1>
+          <p>Media Interaktif Bahasa Inggris • Fase B Semester 2 (Offline Ready)</p>
+        </div>
+      </div>
+
+      <div class="audio-controls-bar">
+        <button type="button" id="speedNormalBtn" class="pill-toggle active-speed" onclick="setSpeechRate(0.92)">
+          🐇 Normal
+        </button>
+        <button type="button" id="speedSlowBtn" class="pill-toggle" onclick="setSpeechRate(0.65)">
+          🐢 Pelan (Slow)
+        </button>
+        <button type="button" class="pill-toggle" onclick="testSpeaker()">
+          🔊 Tes Suara
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       5-MODULE NAVIGATION TABS (ALIGNED WITH RPP STAGES)
+       ======================================================================== -->
+  <nav class="nav-wrapper" aria-label="Tahapan Pembelajaran">
+    <div class="nav-tabs">
+      <button type="button" class="tab-btn active" data-tab="mod1" onclick="switchTab('mod1', this)">
+        <span class="tab-step">1 • Let's Get Ready</span>
+        <span class="tab-title">🃏 Flashcards &amp; Hobi</span>
+      </button>
+      <button type="button" class="tab-btn" data-tab="mod2" onclick="switchTab('mod2', this)">
+        <span class="tab-step">2 • Let's Start Learning</span>
+        <span class="tab-title">🎧 Listen &amp; Check</span>
+      </button>
+      <button type="button" class="tab-btn" data-tab="mod3" onclick="switchTab('mod3', this)">
+        <span class="tab-step">3 • Song Time &amp; TPR</span>
+        <span class="tab-title">🎵 My Hobby Song</span>
+      </button>
+      <button type="button" class="tab-btn" data-tab="mod4" onclick="switchTab('mod4', this)">
+        <span class="tab-step">4 • Pair Work &amp; LKPD</span>
+        <span class="tab-title">🎡 Spinner &amp; Dialog</span>
+      </button>
+      <button type="button" class="tab-btn" data-tab="mod5" onclick="switchTab('mod5', this)">
+        <span class="tab-step">5 • Merefleksikan</span>
+        <span class="tab-title">⭐ Refleksi Diri</span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="main-container">
+    <!-- ======================================================================
+         MODULE 1: FLASHCARDS & KOSAKATA (ACTIVITY 1: LET'S GET READY)
+         ====================================================================== -->
+    <section id="mod1" class="module-section active">
+      <div class="stage-banner">
+        <div>
+          <h2>1. Flashcards &amp; Kosakata (Activity 1: Let's Get Ready)</h2>
+          <p>Klik ikon <strong>😊 I like</strong> atau <strong>☹️ I don't like</strong> pada kartu hobi, lalu tekan <strong>Dengarkan</strong> untuk menirukan pengucapannya!</p>
+        </div>
+        <div class="pattern-chip-group">
+          <button type="button" class="pattern-chip" onclick="speakEnglish('What is your hobby?')">
+            🔊 "What is your hobby?"
+          </button>
+          <button type="button" class="pattern-chip" onclick="speakEnglish('What do you like doing?')">
+            🔊 "What do you like doing?"
+          </button>
+        </div>
+      </div>
+
+      <div id="flashcardsContainer" class="flashcards-grid"></div>
+    </section>
+
+    <!-- ======================================================================
+         MODULE 2: LISTEN & CHECK GAME (ACTIVITY 2: LET'S START LEARNING)
+         ====================================================================== -->
+    <section id="mod2" class="module-section">
+      <div class="stage-banner">
+        <div>
+          <h2>2. Listen &amp; Check Game (Activity 2: Let's Start Learning)</h2>
+          <p>Dengarkan kalimat Bahasa Inggris dengan saksama! Pilih <strong>gambar hobi</strong> dan <strong>ekspresi wajah (😊 / ☹️)</strong> yang sesuai.</p>
+        </div>
+        <button type="button" class="btn-kid btn-yellow" onclick="startNewListenRound()">
+          🔄 Soal Baru
+        </button>
+      </div>
+
+      <div class="game-arena">
+        <div class="game-hud">
+          <button type="button" class="btn-kid btn-blue" onclick="playCurrentListenPrompt()">
+            🔊 Dengarkan Kalimat (Play Audio)
+          </button>
+          <div class="score-pill">
+            ⭐ Bintang Kamu: <span id="listenScore">0</span> | Ronde: <span id="listenRound">1</span>
+          </div>
+        </div>
+
+        <div class="game-step-box">
+          <div class="game-step-label">Langkah 1: Pilih Hobi yang Kamu Dengar (Choose the Hobby)</div>
+          <div id="gameHobbyGrid" class="game-hobby-options"></div>
+        </div>
+
+        <div class="game-step-box">
+          <div class="game-step-label">Langkah 2: Suka atau Tidak Suka? (Choose 😊 I like / ☹️ I don't like)</div>
+          <div class="game-emotion-options">
+            <button type="button" id="gameEmoLike" class="game-emo-card" onclick="selectGameEmotion(true)">
+              <span style="font-size: 1.8rem;">😊</span> I like ... (Suka)
+            </button>
+            <button type="button" id="gameEmoDislike" class="game-emo-card" onclick="selectGameEmotion(false)">
+              <span style="font-size: 1.8rem;">☹️</span> I don't like ... (Tidak Suka)
+            </button>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+          <button type="button" class="btn-kid btn-green" onclick="checkListenAnswer()">
+            ✅ Periksa Jawaban (Check Answer)
+          </button>
+        </div>
+
+        <div id="listenFeedback" class="feedback-banner">
+          <span id="listenFeedbackText"></span>
+          <button type="button" class="btn-kid btn-blue" onclick="startNewListenRound()">
+            Lanjut Soal Berikutnya ➡️
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         MODULE 3: SONG TIME & TPR (ACTIVITY 3: MY HOBBY SONG)
+         ====================================================================== -->
+    <section id="mod3" class="module-section">
+      <div class="stage-banner">
+        <div>
+          <h2>3. Song Time &amp; Gerakan TPR ("My Hobby Song")</h2>
+          <p>Pilih versi lagu dari Lampiran 1 RPP, ubah hobi pada <strong>Custom Verse Builder</strong>, lalu bernyanyi bersama dengan gerakan tubuh (TPR)!</p>
+        </div>
+      </div>
+
+      <div class="song-layout">
+        <!-- Karaoke / Sing-Along Board -->
+        <div class="karaoke-card">
+          <div class="song-selector-tabs">
+            <button type="button" id="songVer1Btn" class="song-ver-btn active" onclick="setSongVersion(1)">
+              🎵 Song 1: "What's your hobby?"
+            </button>
+            <button type="button" id="songVer2Btn" class="song-ver-btn" onclick="setSongVersion(2)">
+              🎶 Song 2: "What do you like doing?"
+            </button>
+          </div>
+
+          <!-- Custom Verse Builder -->
+          <div class="verse-builder">
+            <div class="builder-field">
+              <label for="songLikeSelect">😊 Pilih Hobi untuk "I like ..."</label>
+              <select id="songLikeSelect" onchange="renderSongLyrics()"></select>
+            </div>
+            <div class="builder-field">
+              <label for="songDislikeSelect">☹️ Pilih Hobi untuk "I don't like ..."</label>
+              <select id="songDislikeSelect" onchange="renderSongLyrics()"></select>
+            </div>
+          </div>
+
+          <!-- Highlighted Lyrics Stage -->
+          <div id="lyricsStage" class="lyrics-stage"></div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <button type="button" id="playSongBtn" class="btn-kid btn-green" onclick="playKaraokeSong()">
+              ▶️ Putar Melodi &amp; Nyanyikan (Sing Along)
+            </button>
+            <button type="button" class="btn-kid btn-coral" onclick="stopKaraokeSong()">
+              ⏹️ Berhenti (Stop)
+            </button>
+          </div>
+        </div>
+
+        <!-- TPR Gesture Guide -->
+        <div class="tpr-card">
+          <h3 style="color: var(--primary-blue-dark); font-size: 1.2rem; margin-bottom: 4px;">
+            🕺 Panduan Gerakan TPR (Total Physical Response)
+          </h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">
+            Peragakan gerakan berikut saat menyanyikan setiap baris lagu di depan kelas:
+          </p>
+          <div id="tprGuideContainer" class="tpr-guide-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         MODULE 4: PAIR WORK SPINNER & LKPD DIGITAL (ACTIVITY 3)
+         ====================================================================== -->
+    <section id="mod4" class="module-section">
+      <div class="stage-banner">
+        <div>
+          <h2>4. Pair Work Spinner &amp; LKPD Digital (Activity 3)</h2>
+          <p>Berlatih tanya-jawab berpasangan dengan teman sebangku menggunakan <strong>Roda Putar Hobi</strong> dan lengkapi <strong>LKPD Activity 1</strong>!</p>
+        </div>
+      </div>
+
+      <div class="pair-lkpd-grid">
+        <!-- Pair Work Random Spinner -->
+        <div class="spinner-card">
+          <h3 style="color: var(--primary-blue-dark); font-size: 1.25rem; margin-bottom: 6px;">
+            🎡 Pair Work Random Spinner
+          </h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">
+            Putar kartu untuk menentukan hobi dan ekspresi wajah, lalu praktikkan dialog berpasangan!
+          </p>
+
+          <div id="spinnerStage" class="spinner-stage">
+            <div id="spinnerVisual" style="display: flex; justify-content: center; align-items: center; gap: 16px; margin-bottom: 10px;"></div>
+            <div id="spinnerHobbyLabel" style="font-size: 1.4rem; font-weight: 800; color: var(--text-main);">
+              playing football
+            </div>
+            <div id="spinnerFaceBadge" style="font-size: 1.1rem; font-weight: 800; color: #059669; margin-top: 4px;">
+              😊 Smile Face (I like ...)
+            </div>
+          </div>
+
+          <div class="role-bubble">
+            <strong>🗣️ Murid A (Bertanya):</strong><br />
+            <span id="pairQuestionText">"What do you like doing?" / "What is your hobby?"</span>
+          </div>
+          <div class="role-bubble student-b">
+            <strong>💬 Murid B (Menjawab sesuai simbol):</strong><br />
+            <span id="pairAnswerText" style="font-weight: 800; color: #065f46;">"I like playing football."</span>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px;">
+            <button type="button" class="btn-kid btn-yellow" onclick="spinPairCard()">
+              🎲 Putar Kartu Baru (Spin!)
+            </button>
+            <button type="button" class="btn-kid btn-blue" onclick="speakPairDialogue()">
+              🔊 Cek Jawaban / Dengarkan
+            </button>
+          </div>
+        </div>
+
+        <!-- Digital LKPD Activity 1 (Page 8 of RPP) -->
+        <div class="lkpd-card">
+          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px;">
+            <div>
+              <h3 style="color: var(--primary-blue-dark); font-size: 1.25rem;">
+                📝 LKPD Digital: Activity 1 (Halaman 8 RPP)
+              </h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">
+                Lihat simbol wajah (😊 = <em>like</em> / ☹️ = <em>don't like</em>), lalu pilih kata yang tepat!
+              </p>
+            </div>
+            <button type="button" class="btn-kid btn-green" onclick="checkAllLkpd()">
+              ✅ Cek Semua LKPD
+            </button>
+          </div>
+
+          <div id="lkpdGrid" class="lkpd-items-grid"></div>
+          <div id="lkpdSummary" style="margin-top: 14px; font-weight: 800; font-size: 1.05rem; color: var(--primary-blue-dark);"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         MODULE 5: REFLEKSI DIRI (THINK ABOUT YOUR LEARNING)
+         ====================================================================== -->
+    <section id="mod5" class="module-section">
+      <div class="stage-banner">
+        <div>
+          <h2>5. Refleksi Diri (Think About Your Learning)</h2>
+          <p>Bagaimana perasaan belajarmu hari ini? Klik pilihan yang paling sesuai dengan kemampuanmu untuk mendapatkan <strong>Star Sticker Certificate</strong>!</p>
+        </div>
+      </div>
+
+      <div class="reflection-card">
+        <div class="student-name-bar">
+          <label for="studentNameInput" style="font-weight: 800; color: var(--primary-blue-dark);">
+            ✏️ Nama Lengkap Siswa:
+          </label>
+          <input type="text" id="studentNameInput" placeholder="Ketik namamu di sini (contoh: Made / Siti)..." />
+        </div>
+
+        <div id="reflectionChecklist"></div>
+
+        <div style="text-align: center; margin-top: 20px;">
+          <button type="button" class="btn-kid btn-purple" onclick="claimStarCertificate()">
+            🌟 Dapatkan Star Sticker Certificate!
+          </button>
+        </div>
+
+        <!-- Printable / On-screen Star Sticker Certificate -->
+        <div id="certificateBox" class="certificate-box">
+          <div style="font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">
+            🏆 Penghargaan Belajar Bahasa Inggris • Kelas III SD 🏆
+          </div>
+          <h3 style="font-size: 1.8rem; margin: 6px 0; color: #92400e;">
+            STAR STICKER CERTIFICATE
+          </h3>
+          <p style="font-size: 1rem; font-weight: 700;">Diberikan dengan bangga kepada:</p>
+          <div id="certStudentName" style="font-size: 1.75rem; font-weight: 800; color: #0369a1; margin: 6px 0; text-decoration: underline;">
+            Super Student
+          </div>
+          <p style="font-size: 0.98rem; max-width: 560px; margin: 0 auto; font-weight: 700;">
+            Telah aktif menyimak, bernyanyi <em>"My Hobby Song"</em>, dan mempraktikkan tanya jawab
+            <strong>"What is your hobby?"</strong> menggunakan <strong>"I like..."</strong> &amp; <strong>"I don't like..."</strong>!
+          </p>
+          <div class="cert-stars">⭐⭐⭐⭐⭐</div>
+          <div id="certSummaryText" style="font-size: 0.9rem; font-weight: 700; margin-bottom: 14px;"></div>
+          <button type="button" class="btn-kid btn-blue no-print" onclick="window.print()">
+            🖨️ Cetak / Simpan Sertifikat
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    /* ========================================================================
+       1. CORE DATA FROM RPP (CHAPTER 5 PERTEMUAN 2 - MY HOBBY)
+       ======================================================================== */
+    const HOBBIES = [
+      {
+        id: "swimming",
+        en: "swimming",
+        indo: "berenang",
+        tprEmoji: "🏊",
+        tprDesc: "Gerakan tangan mengayuh air seperti sedang berenang.",
+        defaultLike: true
+      },
+      {
+        id: "playing football",
+        en: "playing football",
+        indo: "bermain sepak bola",
+        tprEmoji: "⚽",
+        tprDesc: "Gerakan menendang bola imajiner ke depan dengan semangat.",
+        defaultLike: true
+      },
+      {
+        id: "dancing",
+        en: "dancing",
+        indo: "menari",
+        tprEmoji: "💃",
+        tprDesc: "Gerakan tangan gemulai dan melangkah menari mengikuti irama.",
+        defaultLike: false
+      },
+      {
+        id: "singing",
+        en: "singing",
+        indo: "bernyanyi",
+        tprEmoji: "🎤",
+        tprDesc: "Memegang mikrofon imajiner di depan mulut sambil bernyanyi.",
+        defaultLike: false
+      },
+      {
+        id: "reading books",
+        en: "reading books",
+        indo: "membaca buku",
+        tprEmoji: "📖",
+        tprDesc: "Membuka kedua telapak tangan seperti membuka halaman buku.",
+        defaultLike: true
+      },
+      {
+        id: "riding a bike",
+        en: "riding a bike",
+        indo: "bersepeda",
+        tprEmoji: "🚴",
+        tprDesc: "Memegang setang sepeda dan kaki mengayuh pedal.",
+        defaultLike: false
+      }
+    ];
+
+    // Exact 6 numbered items from LKPD Activity 1 (Page 8 of RPP)
+    const LKPD_ITEMS = [
+      { num: 1, hobby: "swimming", isLike: true },
+      { num: 2, hobby: "dancing", isLike: false },
+      { num: 3, hobby: "reading books", isLike: true },
+      { num: 4, hobby: "singing", isLike: false },
+      { num: 5, hobby: "playing football", isLike: true },
+      { num: 6, hobby: "riding a bike", isLike: false }
+    ];
+
+    // Self-reflection items from Section C.3 of RPP
+    const REFLECTION_ITEMS = [
+      {
+        id: "refl1",
+        en: "I can ask about my friend's hobby using 'What is your hobby?' / 'What do you like doing?'",
+        indo: "Aku bisa menanyakan hobi temanku dalam Bahasa Inggris."
+      },
+      {
+        id: "refl2",
+        en: "I can say 'I like...' and 'I don't like...' accurately.",
+        indo: "Aku bisa mengucapkan kesukaan ('I like...') dan ketidaksukaan ('I don't like...')."
+      },
+      {
+        id: "refl3",
+        en: "I can sing 'My Hobby Song' with happy TPR gestures!",
+        indo: "Aku bisa menyanyikan lagu 'My Hobby Song' dengan gerakan TPR yang semangat!"
+      }
+    ];
+
+    /* ========================================================================
+       2. VIBRANT CUSTOM INLINE SVG ILLUSTRATIONS (100% OFFLINE)
+       ======================================================================== */
+    function getHobbySVG(hobbyId, size = 110) {
+      const svgs = {
+        "swimming": `
+          <svg width="${size}" height="${size}" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="60" r="56" fill="#bae6fd"/>
+            <path d="M10 74 Q35 64 60 74 T110 74 L110 112 L10 112 Z" fill="#0284c7"/>
+            <path d="M12 86 Q36 78 60 86 T108 86" stroke="#e0f2fe" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <circle cx="52" cy="54" r="14" fill="#fde68a" stroke="#92400e" stroke-width="2.5"/>
+            <ellipse cx="47" cy="52" rx="4" ry="3" fill="#0ea5e9" stroke="#1e293b" stroke-width="1.5"/>
+            <ellipse cx="57" cy="52" rx="4" ry="3" fill="#0ea5e9" stroke="#1e293b" stroke-width="1.5"/>
+            <path d="M48 60 Q52 64 56 60" stroke="#92400e" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M66 64 Q82 44 94 58" stroke="#fde68a" stroke-width="9" fill="none" stroke-linecap="round"/>
+            <circle cx="88" cy="70" r="8" fill="#facc15" stroke="#ca8a04" stroke-width="2"/>
+          </svg>`,
+        "playing football": `
+          <svg width="${size}" height="${size}" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="60" r="56" fill="#dcfce7"/>
+            <rect x="8" y="84" width="104" height="28" rx="10" fill="#22c55e"/>
+            <circle cx="60" cy="58" r="26" fill="#ffffff" stroke="#1e293b" stroke-width="3"/>
+            <polygon points="60,44 71,52 67,65 53,65 49,52" fill="#1e293b"/>
+            <line x1="60" y1="44" x2="60" y2="32" stroke="#1e293b" stroke-width="3"/>
+            <line x1="71" y1="52" x2="84" y2="47" stroke="#1e293b" stroke-width="3"/>
+            <line x1="49" y1="52" x2="36" y2="47" stroke="#1e293b" stroke-width="3"/>
+            <line x1="67" y1="65" x2="76" y2="78" stroke="#1e293b" stroke-width="3"/>
+            <line x1="53" y1="65" x2="44" y2="78" stroke="#1e293b" stroke-width="3"/>
+            <path d="M22 36 L34 42 M20 52 L31 54" stroke="#f59e0b" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>`,
+        "dancing": `
+          <svg width="${size}" height="${size}" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="60" r="56" fill="#fce7f3"/>
+            <circle cx="60" cy="34" r="13" fill="#fde68a" stroke="#92400e" stroke-width="2"/>
+            <path d="M48 30 Q60 18 72 30" fill="#1e293b"/>
+            <path d="M44 52 L76 52 L84 82 L36 82 Z" fill="#f43f5e"/>
+            <path d="M45 54 Q26 38 22 48" stroke="#fde68a" stroke-width="7" fill="none" stroke-linecap="round"/>
+            <path d="M75 54 Q94 36 98 46" stroke="#fde68a" stroke-width="7" fill="none" stroke-linecap="round"/>
+            <path d="M50 82 L44 102 M70 82 L78 100" stroke="#92400e" stroke-width="6" stroke-linecap="round"/>
+            <text x="20" y="30" font-size="16">🎵</text>
+            <text x="86" y="28" font-size="16">🎶</text>
+          </svg>`,
+        "singing": `
+          <svg width="${size}" height="${size}" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="60" r="56" fill="#fef3c7"/>
+            <g transform="rotate(-25 60 64)">
+              <rect x="53" y="54" width="14" height="44" rx="6" fill="#334155"/>
+              <circle cx="60" cy="44" r="16" fill="#94a3b8" stroke="#1e293b" stroke-width="2.5"/>
+              <line x1="45" y1="44" x2="75" y2="44" stroke="#1e293b" stroke-width="2.5"/>
+            </g>
+            <text x="74" y="38" font-size="20">🎵</text>
+            <text x="24" y="46" font-size="18">🎶</text>
+            <text x="78" y="76" font-size="16">✨</text>
+          </svg>`,
+        "reading books": `
+          <svg width="${size}" height="${size}" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="60" r="56" fill="#ede9fe"/>
+            <path d="M22 42 Q42 36 60 46 L60 88 Q42 78 22 84 Z" fill="#ffffff" stroke="#7c3aed" stroke-width="3"/>
+            <path d="M98 42 Q78 36 60 46 L60 88 Q78 78 98 84 Z" fill="#ffffff" stroke="#7c3aed" stroke-width="3"/>
+            <line x1="30" y1="54" x2="52" y2="57" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="30" y1="64" x2="52" y2="67" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="68" y1="57" x2="90" y2="54" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="68" y1="67" x2="90" y2="64" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="60" cy="28" r="7" fill="#facc15"/>
+          </svg>`,
+        "riding a bike": `
+          <svg width="${size}" height="${size}" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="60" r="56" fill="#ffedd5"/>
+            <circle cx="34" cy="78" r="18" fill="none" stroke="#1e293b" stroke-width="4.5"/>
+            <circle cx="86" cy="78" r="18" fill="none" stroke="#1e293b" stroke-width="4.5"/>
+            <path d="M34 78 L54 54 L78 54 L86 78 M54 54 L60 78 L34 78" fill="none" stroke="#f97316" stroke-width="4.5" stroke-linejoin="round"/>
+            <path d="M74 44 L84 44" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round"/>
+            <path d="M46 46 L58 46" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round"/>
+          </svg>`
+      };
+      return svgs[hobbyId] || "";
+    }
+
+    /* ========================================================================
+       3. OFFLINE AUDIO ENGINE: WEB SPEECH API (TTS) & WEB AUDIO API (SYNTH)
+       ======================================================================== */
+    let speechRate = 0.92;
+    let audioCtx = null;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          audioCtx = new AudioContextClass();
+        }
+      }
+      if (audioCtx && audioCtx.state === "suspended") {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function playTone(freq, duration = 0.22, type = "triangle", startTimeOffset = 0, gainVal = 0.18) {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const now = ctx.currentTime + startTimeOffset;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, now);
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.exponentialRampToValueAtTime(gainVal, now + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + duration + 0.02);
+    }
+
+    function playSuccessChime() {
+      playTone(523.25, 0.16, "triangle", 0, 0.22);    // C5
+      playTone(659.25, 0.16, "triangle", 0.12, 0.22); // E5
+      playTone(783.99, 0.28, "triangle", 0.24, 0.25); // G5
+      playTone(1046.5, 0.35, "sine", 0.36, 0.22);     // C6
+    }
+
+    function playGentleErrorSound() {
+      playTone(330, 0.2, "sine", 0, 0.16);
+      playTone(277.18, 0.3, "sine", 0.18, 0.16);
+    }
+
+    function playClickPop() {
+      playTone(600, 0.07, "sine", 0, 0.12);
+    }
+
+    function setSpeechRate(rate) {
+      speechRate = rate;
+      playClickPop();
+      document.getElementById("speedNormalBtn").classList.toggle("active-speed", rate > 0.8);
+      document.getElementById("speedSlowBtn").classList.toggle("active-speed", rate <= 0.8);
+    }
+
+    function speakEnglish(text, onEndCallback = null) {
+      if (!("speechSynthesis" in window)) {
+        if (onEndCallback) setTimeout(onEndCallback, 1200);
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "en-US";
+      utterance.rate = speechRate;
+      utterance.pitch = 1.08;
+
+      const voices = window.speechSynthesis.getVoices();
+      const enVoice = voices.find(v => v.lang.startsWith("en-US")) || voices.find(v => v.lang.startsWith("en"));
+      if (enVoice) utterance.voice = enVoice;
+
+      if (onEndCallback) {
+        utterance.onend = onEndCallback;
+        utterance.onerror = onEndCallback;
+      }
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function testSpeaker() {
+      playSuccessChime();
+      speakEnglish("Hello class! What is your hobby? I like learning English!");
+    }
+
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+    }
+
+    /* ========================================================================
+       4. TAB NAVIGATION CONTROLLER
+       ======================================================================== */
+    function switchTab(moduleId, btnEl) {
+      playClickPop();
+      stopKaraokeSong();
+      document.querySelectorAll(".module-section").forEach(sec => sec.classList.remove("active"));
+      document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+      document.getElementById(moduleId).classList.add("active");
+      btnEl.classList.add("active");
+    }
+
+    /* ========================================================================
+       5. MODULE 1: FLASHCARDS & KOSAKATA (ACTIVITY 1: LET'S GET READY)
+       ======================================================================== */
+    const cardLikeState = {};
+    HOBBIES.forEach(h => { cardLikeState[h.id] = h.defaultLike; });
+
+    function renderFlashcards() {
+      const container = document.getElementById("flashcardsContainer");
+      container.innerHTML = HOBBIES.map(hobby => {
+        const isLike = cardLikeState[hobby.id];
+        const sentence = isLike ? `I like ${hobby.en}.` : `I don't like ${hobby.en}.`;
+        return `
+          <article class="hobby-card ${isLike ? "mode-like" : "mode-dislike"}">
+            <div class="hobby-illustration">
+              ${getHobbySVG(hobby.id, 114)}
+            </div>
+            <div class="hobby-en-title">${hobby.en}</div>
+            <div class="hobby-id-sub">(${hobby.indo})</div>
+
+            <div class="emotion-toggle-group">
+              <button type="button"
+                class="emo-btn like-btn ${isLike ? "selected" : ""}"
+                onclick="toggleCardEmotion('${hobby.id}', true)">
+                😊 I like
+              </button>
+              <button type="button"
+                class="emo-btn dislike-btn ${!isLike ? "selected" : ""}"
+                onclick="toggleCardEmotion('${hobby.id}', false)">
+                ☹️ I don't like
+              </button>
+            </div>
+
+            <div class="sentence-preview-box">
+              <div class="sentence-q">Q: "What do you like doing?"</div>
+              <div class="sentence-a ${isLike ? "text-like" : "text-dislike"}">
+                A: "${sentence}"
+              </div>
+            </div>
+
+            <div class="card-actions">
+              <button type="button" class="btn-kid btn-blue" onclick="speakFlashcardDialogue('${hobby.id}')">
+                🔊 Tanya &amp; Jawab
+              </button>
+              <button type="button" class="btn-kid btn-green" onclick="speakFlashcardAnswerOnly('${hobby.id}')">
+                🗣️ Kalimat Saja
+              </button>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function toggleCardEmotion(hobbyId, isLike) {
+      playClickPop();
+      cardLikeState[hobbyId] = isLike;
+      renderFlashcards();
+      speakFlashcardAnswerOnly(hobbyId);
+    }
+
+    function speakFlashcardDialogue(hobbyId) {
+      const isLike = cardLikeState[hobbyId];
+      const answer = isLike ? `I like ${hobbyId}.` : `I don't like ${hobbyId}.`;
+      speakEnglish(`What do you like doing? ... ${answer}`);
+    }
+
+    function speakFlashcardAnswerOnly(hobbyId) {
+      const isLike = cardLikeState[hobbyId];
+      const answer = isLike ? `I like ${hobbyId}.` : `I don't like ${hobbyId}.`;
+      speakEnglish(answer);
+    }
+
+    /* ========================================================================
+       6. MODULE 2: LISTEN & CHECK GAME (ACTIVITY 2: LET'S START LEARNING)
+       ======================================================================== */
+    let listenState = {
+      targetHobby: "reading books",
+      targetLike: true,
+      pickedHobby: null,
+      pickedLike: null,
+      score: 0,
+      round: 1,
+      solvedCurrent: false
+    };
+
+    function renderListenGameHobbies() {
+      const grid = document.getElementById("gameHobbyGrid");
+      grid.innerHTML = HOBBIES.map(h => `
+        <div class="game-option-card ${listenState.pickedHobby === h.id ? "picked" : ""}"
+             onclick="selectGameHobby('${h.id}')">
+          <div style="display:flex; justify-content:center; margin-bottom:6px;">
+            ${getHobbySVG(h.id, 72)}
+          </div>
+          <div style="font-weight:800; font-size:0.95rem;">${h.en}</div>
+          <div style="font-size:0.78rem; color:var(--text-muted);">${h.indo}</div>
+        </div>
+      `).join("");
+    }
+
+    function selectGameHobby(hobbyId) {
+      playClickPop();
+      listenState.pickedHobby = hobbyId;
+      renderListenGameHobbies();
+    }
+
+    function selectGameEmotion(isLike) {
+      playClickPop();
+      listenState.pickedLike = isLike;
+      document.getElementById("gameEmoLike").classList.toggle("picked-like", isLike === true);
+      document.getElementById("gameEmoDislike").classList.toggle("picked-dislike", isLike === false);
+    }
+
+    function playCurrentListenPrompt() {
+      const text = listenState.targetLike
+        ? `I like ${listenState.targetHobby}.`
+        : `I don't like ${listenState.targetHobby}.`;
+      speakEnglish(text);
+    }
+
+    function startNewListenRound(isInitial = false) {
+      if (!isInitial) {
+        listenState.round += 1;
+      }
+      const randomHobby = HOBBIES[Math.floor(Math.random() * HOBBIES.length)].id;
+      const randomLike = Math.random() >= 0.45;
+      listenState.targetHobby = randomHobby;
+      listenState.targetLike = randomLike;
+      listenState.pickedHobby = null;
+      listenState.pickedLike = null;
+      listenState.solvedCurrent = false;
+
+      document.getElementById("listenRound").textContent = listenState.round;
+      document.getElementById("gameEmoLike").classList.remove("picked-like");
+      document.getElementById("gameEmoDislike").classList.remove("picked-dislike");
+      const fb = document.getElementById("listenFeedback");
+      fb.className = "feedback-banner";
+      renderListenGameHobbies();
+
+      if (!isInitial) {
+        setTimeout(() => playCurrentListenPrompt(), 200);
+      }
+    }
+
+    function checkListenAnswer() {
+      const fb = document.getElementById("listenFeedback");
+      const fbText = document.getElementById("listenFeedbackText");
+
+      if (!listenState.pickedHobby || listenState.pickedLike === null) {
+        playGentleErrorSound();
+        fb.className = "feedback-banner show-error";
+        fbText.textContent = "⚠️ Pilih gambar hobi DAN ekspresi wajah (😊 / ☹️) terlebih dahulu ya!";
+        return;
+      }
+
+      const isCorrect =
+        listenState.pickedHobby === listenState.targetHobby &&
+        listenState.pickedLike === listenState.targetLike;
+
+      const fullSentence = listenState.targetLike
+        ? `I like ${listenState.targetHobby}.`
+        : `I don't like ${listenState.targetHobby}.`;
+
+      if (isCorrect) {
+        if (!listenState.solvedCurrent) {
+          listenState.score += 1;
+          listenState.solvedCurrent = true;
+          document.getElementById("listenScore").textContent = listenState.score;
+        }
+        playSuccessChime();
+        fb.className = "feedback-banner show-success";
+        fbText.textContent = `🎉 Hebat! Jawaban tepat: "${fullSentence}" (+1 Bintang ⭐)`;
+        speakEnglish(`Great job! ${fullSentence}`);
+      } else {
+        playGentleErrorSound();
+        fb.className = "feedback-banner show-error";
+        fbText.textContent = `🤔 Belum tepat, coba dengarkan lagi audio di atas lalu periksa pilihanmu!`;
+        playCurrentListenPrompt();
+      }
+    }
+
+    /* ========================================================================
+       7. MODULE 3: SONG TIME & TPR ("MY HOBBY SONG" - LAMPIRAN 1 RPP)
+       ======================================================================== */
+    let currentSongVersion = 1;
+    let isSongPlaying = false;
+    let songTimers = [];
+
+    function initSongSelectors() {
+      const likeSel = document.getElementById("songLikeSelect");
+      const dislikeSel = document.getElementById("songDislikeSelect");
+      const optionsHtml = HOBBIES.map(h => `<option value="${h.en}">${h.en} (${h.indo})</option>`).join("");
+      likeSel.innerHTML = optionsHtml;
+      dislikeSel.innerHTML = optionsHtml;
+      likeSel.value = "playing football";
+      dislikeSel.value = "dancing";
+    }
+
+    function setSongVersion(ver) {
+      playClickPop();
+      stopKaraokeSong();
+      currentSongVersion = ver;
+      document.getElementById("songVer1Btn").classList.toggle("active", ver === 1);
+      document.getElementById("songVer2Btn").classList.toggle("active", ver === 2);
+      renderSongLyrics();
+    }
+
+    function getSongLines() {
+      const likeHobby = document.getElementById("songLikeSelect").value || "playing football";
+      const dislikeHobby = document.getElementById("songDislikeSelect").value || "dancing";
+      const likeObj = HOBBIES.find(h => h.en === likeHobby) || HOBBIES[1];
+      const dislikeObj = HOBBIES.find(h => h.en === dislikeHobby) || HOBBIES[2];
+
+      const line1 = currentSongVersion === 1
+        ? "What's your hobby? What's your hobby?"
+        : "What do you like doing? What do you like doing?";
+
+      return [
+        { text: line1, badge: "🤷 Gerakan Bertanya" },
+        { text: "Tell me now, tell me now.", badge: "👂 Tangan di Telinga" },
+        { text: `I like ${likeHobby}; I don't like ${dislikeHobby}.`, badge: `😊 ${likeObj.tprEmoji} | ☹️ ${dislikeObj.tprEmoji}` },
+        { text: "How about you? How about you?", badge: "👉 Menunjuk Teman" }
+      ];
+    }
+
+    function renderSongLyrics() {
+      const stage = document.getElementById("lyricsStage");
+      const lines = getSongLines();
+      stage.innerHTML = lines.map((line, idx) => `
+        <div id="lyricLine_${idx}" class="lyric-line">
+          <span>${line.text}</span>
+          <span style="font-size:0.85rem; background:#ffffff; padding:4px 10px; border-radius:999px; border:1px solid #cbd5e1; white-space:nowrap;">
+            ${line.badge}
+          </span>
+        </div>
+      `).join("");
+    }
+
+    function renderTprGuide() {
+      const container = document.getElementById("tprGuideContainer");
+      const staticCues = [
+        { emoji: "🤷", title: "What's your hobby? / What do you like doing?", desc: "Buka kedua telapak tangan ke atas sambil tersenyum bertanya." },
+        { emoji: "👂", title: "Tell me now, tell me now.", desc: "Letakkan telapak tangan di dekat telinga seolah siap mendengarkan." },
+        { emoji: "👍", title: "I like ... / 🙅 I don't like ...", desc: "Jempol ke atas + senyum untuk 'I like', silangkan tangan + cemberut untuk 'I don't like'." }
+      ];
+      const hobbyCues = HOBBIES.map(h => ({
+        emoji: h.tprEmoji,
+        title: h.en,
+        desc: h.tprDesc
+      }));
+      container.innerHTML = [...staticCues, ...hobbyCues].map(item => `
+        <div class="tpr-item">
+          <div class="tpr-emoji">${item.emoji}</div>
+          <div>
+            <div style="font-weight:800; font-size:0.95rem;">${item.title}</div>
+            <div style="font-size:0.83rem; color:var(--text-muted);">${item.desc}</div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    // Plays "Frère Jacques / Are You Sleeping" cheerful bell melody matching My Hobby Song meter
+    function playFrereJacquesMelody() {
+      // Notes: C4 D4 E4 C4 | C4 D4 E4 C4 | E4 F4 G4 | E4 F4 G4 | G4 A4 G4 F4 E4 C4 | G4 A4 G4 F4 E4 C4 | C4 G3 C4 | C4 G3 C4
+      const N = {
+        G3: 196.00, C4: 261.63, D4: 293.66, E4: 329.63, F4: 349.23, G4: 392.00, A4: 440.00
+      };
+      const pattern = [
+        [N.C4, 0.0, 0.35], [N.D4, 0.4, 0.35], [N.E4, 0.8, 0.35], [N.C4, 1.2, 0.35],
+        [N.C4, 1.6, 0.35], [N.D4, 2.0, 0.35], [N.E4, 2.4, 0.35], [N.C4, 2.8, 0.35],
+
+        [N.E4, 3.3, 0.35], [N.F4, 3.7, 0.35], [N.G4, 4.1, 0.65],
+        [N.E4, 4.9, 0.35], [N.F4, 5.3, 0.35], [N.G4, 5.7, 0.65],
+
+        [N.G4, 6.5, 0.2], [N.A4, 6.75, 0.2], [N.G4, 7.0, 0.2], [N.F4, 7.25, 0.2], [N.E4, 7.5, 0.35], [N.C4, 7.9, 0.35],
+        [N.G4, 8.35, 0.2], [N.A4, 8.6, 0.2], [N.G4, 8.85, 0.2], [N.F4, 9.1, 0.2], [N.E4, 9.35, 0.35], [N.C4, 9.75, 0.35],
+
+        [N.C4, 10.2, 0.35], [N.G3, 10.6, 0.35], [N.C4, 11.0, 0.65],
+        [N.C4, 11.8, 0.35], [N.G3, 12.2, 0.35], [N.C4, 12.6, 0.7]
+      ];
+      pattern.forEach(([freq, offset, dur]) => {
+        playTone(freq, dur, "triangle", offset, 0.14);
+      });
+    }
+
+    function playKaraokeSong() {
+      stopKaraokeSong();
+      isSongPlaying = true;
+      const lines = getSongLines();
+      playFrereJacquesMelody();
+
+      let idx = 0;
+      function singLine() {
+        if (!isSongPlaying || idx >= lines.length) {
+          document.querySelectorAll(".lyric-line").forEach(el => el.classList.remove("singing-now"));
+          isSongPlaying = false;
+          return;
+        }
+        document.querySelectorAll(".lyric-line").forEach(el => el.classList.remove("singing-now"));
+        const activeEl = document.getElementById(`lyricLine_${idx}`);
+        if (activeEl) activeEl.classList.add("singing-now");
+
+        speakEnglish(lines[idx].text, () => {
+          idx += 1;
+          const t = setTimeout(singLine, 250);
+          songTimers.push(t);
+        });
+      }
+      singLine();
+    }
+
+    function stopKaraokeSong() {
+      isSongPlaying = false;
+      songTimers.forEach(t => clearTimeout(t));
+      songTimers = [];
+      if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+      document.querySelectorAll(".lyric-line").forEach(el => el.classList.remove("singing-now"));
+    }
+
+    /* ========================================================================
+       8. MODULE 4: PAIR WORK SPINNER & LKPD DIGITAL (ACTIVITY 3)
+       ======================================================================== */
+    let currentSpinState = {
+      hobby: "playing football",
+      isLike: true
+    };
+
+    function renderSpinnerCard() {
+      const { hobby, isLike } = currentSpinState;
+      document.getElementById("spinnerVisual").innerHTML = `
+        ${getHobbySVG(hobby, 100)}
+        <div style="font-size: 4.2rem; line-height: 1;">${isLike ? "😊" : "☹️"}</div>
+      `;
+      document.getElementById("spinnerHobbyLabel").textContent = hobby;
+      const badge = document.getElementById("spinnerFaceBadge");
+      if (isLike) {
+        badge.textContent = "😊 Smile Face (I like ...)";
+        badge.style.color = "#059669";
+      } else {
+        badge.textContent = "☹️ Sad Face (I don't like ...)";
+        badge.style.color = "#e11d48";
+      }
+
+      const ansEl = document.getElementById("pairAnswerText");
+      ansEl.textContent = isLike ? `"I like ${hobby}."` : `"I don't like ${hobby}."`;
+      ansEl.style.color = isLike ? "#065f46" : "#9f1239";
+    }
+
+    function spinPairCard() {
+      const stage = document.getElementById("spinnerStage");
+      stage.classList.add("spinning");
+      let ticks = 0;
+      const interval = setInterval(() => {
+        playTone(440 + ticks * 45, 0.06, "sine", 0, 0.12);
+        currentSpinState.hobby = HOBBIES[ticks % HOBBIES.length].id;
+        currentSpinState.isLike = ticks % 2 === 0;
+        renderSpinnerCard();
+        ticks += 1;
+        if (ticks >= 8) {
+          clearInterval(interval);
+          stage.classList.remove("spinning");
+          currentSpinState.hobby = HOBBIES[Math.floor(Math.random() * HOBBIES.length)].id;
+          currentSpinState.isLike = Math.random() >= 0.5;
+          renderSpinnerCard();
+          playSuccessChime();
+        }
+      }, 95);
+    }
+
+    function speakPairDialogue() {
+      const { hobby, isLike } = currentSpinState;
+      const answer = isLike ? `I like ${hobby}.` : `I don't like ${hobby}.`;
+      speakEnglish(`What do you like doing? ... ${answer}`);
+    }
+
+    // LKPD Digital State (6 items from page 8 of RPP)
+    const lkpdUserAnswers = {};
+
+    function renderLkpdItems() {
+      const grid = document.getElementById("lkpdGrid");
+      grid.innerHTML = LKPD_ITEMS.map(item => {
+        const userChoice = lkpdUserAnswers[item.num];
+        const previewWord = userChoice === undefined ? "____________" : userChoice;
+        return `
+          <div id="lkpdCard_${item.num}" class="lkpd-item">
+            <div class="lkpd-header">
+              <span class="lkpd-num-badge">No. ${item.num}</span>
+              <span class="lkpd-face-clue" title="${item.isLike ? "Smile = like" : "Sad = don't like"}">
+                ${item.isLike ? "😊" : "☹️"}
+              </span>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+              ${getHobbySVG(item.hobby, 64)}
+              <div style="font-size:0.88rem; line-height:1.4;">
+                <div><strong>A:</strong> "What do you like doing?"</div>
+                <div><strong>B:</strong> "I <strong style="color:#0369a1;">${previewWord}</strong> (${item.hobby})."</div>
+              </div>
+            </div>
+
+            <div class="lkpd-choice-row">
+              <button type="button"
+                class="lkpd-opt-btn ${userChoice === "like" ? "active-choice" : ""}"
+                onclick="pickLkpdAnswer(${item.num}, 'like')">
+                like
+              </button>
+              <button type="button"
+                class="lkpd-opt-btn ${userChoice === "don't like" ? "active-choice" : ""}"
+                onclick="pickLkpdAnswer(${item.num}, 'don\\'t like')">
+                don't like
+              </button>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function pickLkpdAnswer(num, choice) {
+      playClickPop();
+      lkpdUserAnswers[num] = choice;
+      renderLkpdItems();
+      const item = LKPD_ITEMS.find(i => i.num === num);
+      if (item) {
+        speakEnglish(`I ${choice} ${item.hobby}.`);
+      }
+    }
+
+    function checkAllLkpd() {
+      let correctCount = 0;
+      LKPD_ITEMS.forEach(item => {
+        const expected = item.isLike ? "like" : "don't like";
+        const cardEl = document.getElementById(`lkpdCard_${item.num}`);
+        cardEl.classList.remove("correct-item", "wrong-item");
+        if (lkpdUserAnswers[item.num] === expected) {
+          correctCount += 1;
+          cardEl.classList.add("correct-item");
+        } else {
+          cardEl.classList.add("wrong-item");
+        }
+      });
+
+      const summaryEl = document.getElementById("lkpdSummary");
+      if (correctCount === LKPD_ITEMS.length) {
+        playSuccessChime();
+        summaryEl.style.color = "#059669";
+        summaryEl.textContent = `🌟 Sempurna! Kamu menjawab ${correctCount} dari 6 soal LKPD dengan benar!`;
+        speakEnglish("Fantastic job! All six answers are correct!");
+      } else {
+        playGentleErrorSound();
+        summaryEl.style.color = "#e11d48";
+        summaryEl.textContent = `📊 Skor LKPD: ${correctCount} / 6 benar. Perhatikan ikon 😊 (like) dan ☹️ (don't like) pada kotak merah ya!`;
+      }
+    }
+
+    /* ========================================================================
+       9. MODULE 5: REFLEKSI DIRI & STAR STICKER CERTIFICATE
+       ======================================================================== */
+    const reflectionState = {};
+
+    function renderReflectionChecklist() {
+      const container = document.getElementById("reflectionChecklist");
+      container.innerHTML = REFLECTION_ITEMS.map(item => {
+        const val = reflectionState[item.id];
+        return `
+          <div class="refl-row">
+            <div class="refl-text">
+              <h4>${item.en}</h4>
+              <p>${item.indo}</p>
+            </div>
+            <div class="refl-options">
+              <button type="button"
+                class="refl-pick-btn ${val === "yes" ? "selected-yes" : ""}"
+                onclick="setReflectionChoice('${item.id}', 'yes')">
+                🌟 Yes, I can! (Bisa)
+              </button>
+              <button type="button"
+                class="refl-pick-btn ${val === "practice" ? "selected-practice" : ""}"
+                onclick="setReflectionChoice('${item.id}', 'practice')">
+                💪 I need more practice (Perlu latihan)
+              </button>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function setReflectionChoice(id, val) {
+      playClickPop();
+      reflectionState[id] = val;
+      renderReflectionChecklist();
+    }
+
+    function claimStarCertificate() {
+      const rawName = document.getElementById("studentNameInput").value.trim();
+      const studentName = rawName || "Hebat Kelas III SD";
+      const yesCount = Object.values(reflectionState).filter(v => v === "yes").length;
+
+      document.getElementById("certStudentName").textContent = studentName;
+      document.getElementById("certSummaryText").textContent =
+        yesCount === 3
+          ? "Status Refleksi: Sangat Percaya Diri (3/3 Target Tercapai) • Apresiasi Guru: Fantastic Job!"
+          : "Status Refleksi: Terus Berlatih dengan Semangat! • Apresiasi Guru: Great Effort!";
+
+      const certBox = document.getElementById("certificateBox");
+      certBox.classList.add("visible");
+      playSuccessChime();
+      speakEnglish(`Congratulations ${studentName}! Fantastic job today!`);
+    }
+
+    /* ========================================================================
+       10. INITIALIZE ALL MODULES ON LOAD
+       ======================================================================== */
+    window.addEventListener("DOMContentLoaded", () => {
+      renderFlashcards();
+      startNewListenRound(true);
+      initSongSelectors();
+      renderSongLyrics();
+      renderTprGuide();
+      renderSpinnerCard();
+      renderLkpdItems();
+      renderReflectionChecklist();
+    });
+  </script>
+</body>
+</html>
